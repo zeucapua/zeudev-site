@@ -4,4 +4,4 @@
   export let tailwind;
 </script>
 
-<pre data-prefix={prefix} class={"my-0 " + tailwind}><code>{line}</code></pre> 
+<pre data-prefix={prefix} class={tailwind}><code>{line}</code></pre> 

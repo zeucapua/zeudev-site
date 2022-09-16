@@ -4,16 +4,50 @@ publishDate: '21 September 2022'
 layout: '../src/layouts/BlogLayout.astro'
 ---
 
+import BlogHeader from '../../components/BlogHeader.svelte'
 import Counter from '../../components/Counter.svelte'
 import CodeMockup from '../../components/CodeMockup.svelte'
 import MockupLine from '../../components/MockupLine.svelte'
 import MockupAnnotate from '../../components/MockupAnnotate.svelte'
 
-# {frontmatter.title}
 
-{frontmatter.publishDate}
+<BlogHeader title={frontmatter.title} publishDate={frontmatter.publishDate} />
 
-<Counter client:load />
+
+## Syntax highlighting
+
+This example is using MDX page routing built into Astro while styled by TailwindCSS and Svelte components using daisyUI as a base to create interactive code highlighting.
+
+For example, the following code snippet with component result are created by combining daisyUI's window mockup component with syntax highlighting with prose in markdown. Underneath, the result is rendered as a Svelte component using MDX.
+
+<div class="mockup-window border bg-base-300">
+  <div class="flex flex-col justify-center bg-base-200">
+    ```svelte
+      <script>
+        export let count = 1;
+
+        function incrementCount() {
+          count += 1;
+        }
+      </script>
+
+      <button class="btn block my-2 not-prose" on:click={incrementCount}>
+        Clicked {count} {count === 1 ? 'time' : 'times'}
+      </button>
+    ```
+    <div class="divider my-0 py-0" />
+    <div class="text-center mx-auto py-0 mb-16">
+      ## Result
+      <Counter client:visible />
+    
+    </div>
+  </div>
+</div>
+
+## Code Annotation
+
+Using custom daisyUI components rendered in Svelte, we can create a more pointed code snippet with notes on specific lines of code.
+
 <CodeMockup>
   <MockupLine prefix="1" line="npm i daisyui" />
   <MockupLine prefix="2" line="installing..." tailwind="text-warning" />
@@ -22,6 +56,5 @@ import MockupAnnotate from '../../components/MockupAnnotate.svelte'
     lineTailwind="bg-warning text-warning-content"
     annotationTailwind="bg-warning text-warning-content"
   />
+  <MockupLine prefix=">" line="Neat tool right?" />
 </CodeMockup>
-
-This is a test MDX blog for Astro.

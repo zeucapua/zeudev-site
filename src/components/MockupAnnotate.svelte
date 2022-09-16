@@ -6,13 +6,13 @@
   export let annotationTailwind = "";
 </script>
 
-<div class="collapse">
+<div class="collapse collapse-arrow text-black">
   <input type="checkbox" />
   <div class="collapse-title px-0">
-    <pre data-prefix={prefix} class={"my-0 rounded-none " + lineTailwind}><code>{line}</code></pre>
+    <pre data-prefix={prefix} class={"rounded-none " + lineTailwind}><code>{line}</code></pre>
   </div>
-  <div class={"collapse-content rounded-none " + annotationTailwind}>
-    <p class="py-3">
+  <div class={"collapse-content rounded-none mb-3 " + annotationTailwind}>
+    <p class="pt-3">
       {annotation}
     </p>
   </div>
