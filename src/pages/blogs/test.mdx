@@ -1,0 +1,27 @@
+---
+title: 'My first MDX post'
+publishDate: '21 September 2022'
+layout: '../src/layouts/BlogLayout.astro'
+---
+
+import Counter from '../../components/Counter.svelte'
+import CodeMockup from '../../components/CodeMockup.svelte'
+import MockupLine from '../../components/MockupLine.svelte'
+import MockupAnnotate from '../../components/MockupAnnotate.svelte'
+
+# {frontmatter.title}
+
+{frontmatter.publishDate}
+
+<Counter client:load />
+<CodeMockup>
+  <MockupLine prefix="1" line="npm i daisyui" />
+  <MockupLine prefix="2" line="installing..." tailwind="text-warning" />
+  <MockupAnnotate prefix="3" line="Error" 
+    annotation="This is a test annotation inside the code mockup"
+    lineTailwind="bg-warning text-warning-content"
+    annotationTailwind="bg-warning text-warning-content"
+  />
+</CodeMockup>
+
+This is a test MDX blog for Astro.
