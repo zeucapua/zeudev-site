@@ -1,7 +1,7 @@
 ---
 import SiteNavbar from "../components/SiteNavbar.astro";
 
-const { frontmatter } = Astro.props;
+const {title} = Astro.props;
 ---
 
 <html lang="en" data-theme="synthwave">
@@ -9,10 +9,10 @@ const { frontmatter } = Astro.props;
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{frontmatter.title + " | zeu.dev"}</title>
+    <title>{title === "Index" ? "zeu.dev" : title + " | zeu.dev"}</title>
   </head>
   <body>
-    <div class="flex flex-col w-full min-w-screen h-full min-h-screen">
+    <div class="flex flex-col w-full min-w-screen h-full min-h-screen bg-[url('/Radial6-Grain3.png')] bg-cover bg-center bg-fixed">
       <SiteNavbar />
       <slot />      
     </div>

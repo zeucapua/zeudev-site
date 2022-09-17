@@ -1,0 +1,18 @@
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+
+const blogs = await Astro.glob('../blogs/*.mdx');
+
+---
+
+<SiteLayout title="Blogs">
+  <div class="flex w-full md:w-5/6 mx-auto md:shadow-xl justify-center p-8 ">
+    <ul class="list-disc">
+      {
+        blogs.map( blog => 
+          <li><a href={blog.url}>{blog.frontmatter.title}</a></li>
+        )
+      }
+    </ul>
+  </div>
+</SiteLayout>

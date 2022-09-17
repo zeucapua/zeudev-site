@@ -1,12 +1,10 @@
 ---
 import SiteLayout from "./SiteLayout.astro";
-
 const { frontmatter } = Astro.props; 
-
 ---
 
-<SiteLayout frontmatter={frontmatter}>
-  <div class="flex w-full md:w-5/6 mx-auto md:shadow-xl justify-center p-8 ">
+<SiteLayout title={frontmatter.title}>
+  <div class="flex w-full md:w-5/6 md:bg-black md:bg-opacity-10 md:backdrop-blur-xl md:shadow-xl mx-auto justify-center p-8 ">
     <article class="prose md:prose-xl overflow-hidden">
       <slot />
     </article>
