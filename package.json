@@ -14,6 +14,7 @@
     "@astrojs/mdx": "^0.11.1",
     "@astrojs/svelte": "^1.0.0",
     "@astrojs/tailwind": "^2.0.1",
+    "@fontsource/quicksand": "^4.5.10",
     "astro": "^1.2.5",
     "daisyui": "^2.27.0",
     "svelte": "^3.50.1",

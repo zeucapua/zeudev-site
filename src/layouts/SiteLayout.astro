@@ -1,5 +1,5 @@
 ---
-import SiteNavbar from "../components/SiteNavbar.astro";
+import GlobalStyles from "../components/GlobalStyles.astro";
 
 const {title} = Astro.props;
 ---
@@ -12,9 +12,10 @@ const {title} = Astro.props;
     <title>{title === "Index" ? "zeu.dev" : title + " | zeu.dev"}</title>
   </head>
   <body>
-    <div class="flex flex-col w-full min-w-screen h-full min-h-screen bg-[url('/Radial6-Grain3.png')] bg-cover bg-center bg-fixed">
-      <SiteNavbar />
-      <slot />      
+    <div class="flex flex-col w-full min-w-screen h-full min-h-screen 
+      bg-[url('/free-vector-vintage-grit-textures1.png')] bg-cover bg-fixed"
+    >
+      <slot />
     </div>
   </body>
 </html>

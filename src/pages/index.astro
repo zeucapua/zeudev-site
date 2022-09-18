@@ -1,8 +1,16 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import GlobalStyles from "../components/GlobalStyles.astro";
 ---
 <SiteLayout title="Index">
-  <div class="flex w-full md:w-5/6 mx-auto md:bg-black md:bg-opacity-10 md:backdrop-blur-xl md:shadow-xl justify-center p-8 ">
+  <div class="flex flex-row w-full mx-auto my-auto justify-center gap-8 p-8">
+    <a href="/blogs">
+      <p class="text-7xl font-['Montra'] text-zprimary">Blog</p>
+    </a>
     
+    <p class="text-7xl font-['Montra'] text-white">*</p>
+    <p class="text-7xl font-['Montra'] text-zsecondary">Portfolio</p>
+    <p class="text-7xl font-['Montra'] text-white">*</p>
+    <p class="text-7xl font-['Montra'] text-zaccent">About</p>
   </div>
 </SiteLayout>
