@@ -4,7 +4,7 @@ const { frontmatter } = Astro.props;
 ---
 
 <SiteLayout title={frontmatter.title}>
-  <div class="flex w-full mx-auto justify-center p-8 ">
+  <div class="flex w-full mx-auto p-8 bg-black/50">
     <article class="prose md:prose-xl overflow-hidden">
       <slot />
     </article>

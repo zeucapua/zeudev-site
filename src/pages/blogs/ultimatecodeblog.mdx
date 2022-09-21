@@ -5,9 +5,9 @@ layout: '../../layouts/BlogLayout.astro'
 ---
 
 import Counter from '../../components/Counter.svelte';
-import CodeMockup from '../../components/CodeMockup.svelte';
-import MockupLine from '../../components/MockupLine.svelte';
-import MockupAnnotate from '../../components/MockupAnnotate.svelte';
+import CodeMockup from '../../components/codemockup/CodeMockup.svelte';
+import MockupLine from '../../components/codemockup/MockupLine.svelte';
+import MockupAnnotate from '../../components/codemockup/MockupAnnotate.svelte';
 import BlogHeader from '../../components/BlogHeader.svelte';
 
 <BlogHeader title={frontmatter.title} publishDate={frontmatter.publishDate} />
@@ -66,40 +66,11 @@ line with a collapsible annotation:
   <MockupLine prefix="2" line="installing..." tailwind="text-warning" />
   <MockupAnnotate prefix="3" line="Error" 
     annotation="This means that installing daisyUI didn't work!"
-    lineTailwind="bg-warning text-warning-content"
-    annotationTailwind="bg-warning text-warning-content"
+    lineTailwind="bg-error text-error-content"
+    annotationTailwind="bg-error text-error-content"
   />
   <MockupLine prefix=">" line="Neat tool right?" />
 </CodeMockup>
-
-## Side-by-Side Preview
-
-Using the power of MDX, you can have the code next to the component you are teaching to build. For example,
-here is the full code for the Counter component in Svelte from earlier alongside the component itself:
-
-<div class="mockup-window border bg-base-300">
-  <div class="flex flex-col justify-center bg-base-200">
-    ```svelte
-      <script>
-        export let count = 1;
-
-        function incrementCount() {
-          count += 1;
-        }
-      </script>
-
-      <button class="btn block my-2 not-prose" on:click={incrementCount}>
-        Clicked {count} {count === 1 ? 'time' : 'times'}
-      </button>
-    ```
-    <div class="divider my-0 py-0" />
-    <div class="text-center mx-auto py-0 mb-16">
-      ## Result
-      <Counter client:visible />
-    
-    </div>
-  </div>
-</div>
 
 ## Conclusion
 
