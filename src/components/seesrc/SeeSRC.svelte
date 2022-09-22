@@ -2,23 +2,15 @@
   import Icon from '@iconify/svelte';
 	import { flip } from 'svelte/animate';
 	import { dndzone } from 'svelte-dnd-action';
-    import { dataset_dev } from 'svelte/internal';
-  
+  import { faker } from 'https://cdn.skypack.dev/@faker-js/faker';
+
   // routes for CRUD
-  let items = [
-		{id: 11, name: "item11", parent: ""},
-    {id: 12, name: "item12", parent: ""},
-		{id: 13, name: "item13", parent: ""},
-		{id: 14, name: "item14", parent: "item13"},
-		{id: 15, name: "item15", parent: "item13"},
-		{id: 16, name: "item16", parent: ""},
-		{id: 17, name: "item17", parent: ""}
-	]; 
+  let items = []; 
 
   // route CRUD functions
   function create() {
     let num = items.length;
-    items = [...items, {id:num, name: ("item" + num), parent: ""}];
+    items = [...items, {id: faker.datatype.uuid(), name: ("item" + num), parent: "", layers: 0}];
   }
 
   function moveLeft(name) {
@@ -28,22 +20,30 @@
     if (current.parent == previous.parent) {
       let grandfather = items.find(item => item.name == current.parent).parent;
       current.parent = grandfather;
+      current.layers--;
     }
     else {
-      let newParent = previous.parent;
-      const temp = items.filter(item => item.name != current.name);
-      temp.splice(temp.lastIndexOf(item => item.parent == current.parent)-1, 0, current);
-      current.parent = newParent;
-      items = [...temp];
+      current.parent = previous.parent;
+      current.layers--;
     }
-
+    if (current.layers < 0) { current.layers = 0; }
     update();
   }
 
   function moveRight(name) {
     let current = items.find(item => item.name == name);
     let previous = items[items.findIndex(item => item.name == name) - 1];
-    current.parent = previous.name;
+    
+    if (current.parent != previous.name) {
+      if (current.parent == previous.parent) {
+        current.parent = previous.name;
+        current.layers++;
+      }
+      else if (previous.parent != "") { 
+        current.parent = previous.parent;
+        current.layers++;
+      }
+    }
     update();
   }
 
@@ -56,23 +56,36 @@
 	}
 
 	function handleDndFinalize(e) {
-		items = e.detail.items;items.forEach((item, index) => {
+		items = e.detail.items;
+    
+    update();
+	}
+
+
+  // utilities
+  function update() {
+    items.forEach((item, index) => {
       if (index == 0) {
         item.parent = "";
       } 
       else {
         let previous = items[index-1];
-        if (item.parent != previous.name && item.parent != previous.parent) {
-          item.parent = "";
+        if (item.parent != previous.name) {
+          if (item.parent == previous.parent) {
+            item.layers = previous.layers;
+          }
+          else {
+            item.parent = "";
+            item.layers = 0;
+          }
+          
+        }
+        else if (item.parent == previous.name) {
+          item.layers = previous.layers + 1;
         }
       }
     });
-    update();
-	}
-
-  function update() {
     items = [...items];
-    console.log(items);
   }
   
 </script>
@@ -85,19 +98,26 @@
   {#each items as item(item.id)}
     <div 
       animate:flip="{{duration: flipDurationMs}}" 
-      class={(item.parent != "" ? "ml-3" : "ml-0") + " px-3 py-2 w-fit bg-neutral"}
+      class="flex flex-row justify-items-stretch w-64 px-3 py-2 bg-neutral rounded-md"
+      style:margin-left={item.layers > 0 ? `${item.layers * 10}px` : "0"}
     >
-      {item.name}
-      {#if item.parent}
-        <button class="btn btn-ghost" on:click={moveLeft(item.name)}>
-          <Icon icon="bi:arrow-bar-left" />
+      <p class="text-lg my-auto basis-1/2">{item.name}</p>
+      <div class="basis-1/2 justify-self-end">
+        {#if item.parent}
+          <button class="btn btn-ghost" on:click={moveLeft(item.name)}>
+            <Icon icon="bi:arrow-bar-left" />
+          </button>
+        {/if}
+        <button class="btn btn-ghost" on:click={moveRight(item.name)}>
+          <Icon icon="bi:arrow-bar-right" />
         </button>
-      {/if}
-      <button class="btn btn-ghost" on:click={moveRight(item.name)}>
-        <Icon icon="bi:arrow-bar-right" />
-      </button>
+      </div>
+      
     </div>
   {/each}  
 </div>
 
-<button class="btn" on:click={create}>Add</button>
+<div class="flex flex-row gap-8">
+  <button class="btn" on:click={create}>Add</button>
+  <button class="btn" on:click={create}>Export</button>
+</div>
