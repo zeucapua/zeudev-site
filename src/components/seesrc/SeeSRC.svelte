@@ -90,6 +90,8 @@
   
 </script>
 
+<p>test</p>
+
 <div 
   class="flex flex-col gap-3 mx-auto" 
   use:dndzone={{items, flipDurationMs}} 
