@@ -20,7 +20,9 @@
     "tailwindcss": "^3.1.8"
   },
   "devDependencies": {
+    "@iconify/svelte": "^3.0.0",
     "@tailwindcss/typography": "^0.5.7",
+    "svelte-dnd-action": "^0.9.20",
     "swup": "^2.0.19"
   }
 }
