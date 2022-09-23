@@ -53,6 +53,11 @@
     items = [...filtered];
     update();
   }
+  
+  function clear() {
+    items = [];
+    update();
+  }
 
   // svelte-dnd-action functions and svelte flip animation duration
   const flipDurationMs = 300;
@@ -109,14 +114,94 @@
 
 </script>
 
-<div class="card card-side mx-10 my-10 bg-white/50 backdrop-blur-md">
-  <div class="flex flex-col gap-8 p-5">
-    <button class="btn" on:click={create}>Add</button>
-    <button class="btn" on:click={exportString}>Export</button>
-  </div>
-  <div class="card-body border-2 rounded-lg m-5 overflow-y-clip">
+<div class="container w-full h-screen flex mx-auto">
+  <div class="flex flex-row border-2 rounded-lg w-full h-5/6 my-auto bg-base-100/60">
+    
+    <div class="flex flex-col h-full mx-auto p-5 basis-1/3">
+      <a href="/">
+        <p class="text-xl text-accent font-['Radwave'] mb-4">← Back</p>
+      </a>
+      
+      <p class="text-5xl font-['Radwave'] text-primary">seesrc</p>
+      <p class="text-xl font-['Radwave'] text-secondary">Show your project and file structure easily.</p>
+      <p class="text-lg">
+        Drag and drop, rename, add, and delete to make 
+        great displays, exported as text so you're ready
+        to add it to your blog or readme files.
+      </p>
+
+      <ul class="menu menu-horizontal p-2 bg-base-100 rounded-box mx-auto my-5">
+        <li>
+          <div class="tooltip tooltip-bottom" data-tip="Add">
+            <button on:click={create}>
+              <Icon icon="akar-icons:plus" />
+            </button>
+          </div>
+        </li>
+        <li>
+          <div class="tooltip tooltip-bottom" data-tip="Clear">
+            <button on:click={clear}>
+              <Icon icon="bi:arrow-repeat" />
+            </button>
+          </div>
+        </li>
+        <li>
+          <div class="tooltip tooltip-bottom" data-tip="Export">
+            <button on:click={exportString}>
+              <Icon icon="bi:box-arrow-up-right" />
+            </button>
+          </div>
+        </li>
+      </ul>
+
+      <div class="alert alert-warning my-5">
+        <div>
+          <Icon icon="bi:exclamation-triangle"/>
+          <span>This tool is for desktop ONLY</span>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="w-full">
+        <p class="text-xl font-['Radwave'] text-secondary">Technologies used: </p>
+        <ul class="list-disc list-inside mx-auto w-full">
+          <li>
+            <a class="link link-accent font-bold" target="_blank"
+              href="https://github.com/isaacHagoel/svelte-dnd-action" 
+            >
+              svelte-dnd-action
+            </a>
+            <p class="inline">
+              : by isaacHagoel, used in the display and controlling of items
+              in the list
+            </p>
+          </li>
+          <li>
+            <a class="link link-accent font-bold" target="_blank"
+              href="https://fakerjs.dev/" 
+            >
+              fakerjs
+            </a>
+            <p class="inline">
+              : by faker-js team, used for generating UUID's for each item
+            </p>
+          </li>
+        </ul>
+      </div>
+
+      
+
+      <a class="btn btn-accent gap-8 mx-auto mt-5" target="_blank"
+        href="https://github.com/zeucapua/zeudev-site/blob/master/src/components/seesrc/SeeSRC.svelte">
+        <Icon icon="bi:github" />
+        How does Seesrc work?
+      </a>
+    </div>
+
+
     <div 
-      class="flex flex-col gap-3 mx-auto" 
+      class="flex flex-col gap-3 py-8 mx-auto basis-2/3 h-full overflow-y-scroll" 
       use:dndzone={{items, flipDurationMs}} 
       on:consider={handleDndConsider} on:finalize={handleDndFinalize}
     >
@@ -144,8 +229,9 @@
         </div>
       {/each}  
     </div>
+    
   </div>
-  
+
 </div>
 
 
