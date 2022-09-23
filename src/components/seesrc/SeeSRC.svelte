@@ -2,7 +2,7 @@
   import Icon from '@iconify/svelte';
 	import { flip } from 'svelte/animate';
 	import { dndzone } from 'svelte-dnd-action';
-  import { faker } from 'https://cdn.skypack.dev/@faker-js/faker';
+  import { faker } from '@faker-js/faker';
 
   // routes for CRUD
   let items = []; 
@@ -89,8 +89,6 @@
   }
   
 </script>
-
-<p>test</p>
 
 <div 
   class="flex flex-col gap-3 mx-auto" 
