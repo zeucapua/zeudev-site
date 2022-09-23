@@ -13,9 +13,9 @@
     items = [...items, {id: faker.datatype.uuid(), name: ("item" + num), parent: "", layers: 0}];
   }
 
-  function moveLeft(name) {
-    let current = items.find(item => item.name == name);
-    let previous = items[items.findIndex(item => item.name == name) - 1];
+  function moveLeft(id) {
+    let current = items.find(item => item.id == id);
+    let previous = items[items.findIndex(item => item.id == id) - 1];
 
     if (current.parent == previous.parent) {
       let grandfather = items.find(item => item.name == current.parent).parent;
@@ -30,9 +30,9 @@
     update();
   }
 
-  function moveRight(name) {
-    let current = items.find(item => item.name == name);
-    let previous = items[items.findIndex(item => item.name == name) - 1];
+  function moveRight(id) {
+    let current = items.find(item => item.id == id);
+    let previous = items[items.findIndex(item => item.id == id) - 1];
     
     if (current.parent != previous.name) {
       if (current.parent == previous.parent) {
@@ -47,6 +47,12 @@
     update();
   }
 
+  function remove(id) {
+    let filtered = items.filter((i) => i.id != id);
+    console.log(filtered);
+    items = [...filtered];
+    update();
+  }
 
   // svelte-dnd-action functions and svelte flip animation duration
   const flipDurationMs = 300;
@@ -88,36 +94,58 @@
     items = [...items];
   }
   
+  function exportString() {
+    let result = '';
+    items.forEach((item) => {
+      if (item.layers > 0) {
+        result += `${('   ').repeat(item.layers)}└─ /${item.name}\n`;
+      }
+      else {
+        result += `/${item.name}\n`;
+      }
+    });
+    console.log(result);
+  }
+
 </script>
 
-<div 
-  class="flex flex-col gap-3 mx-auto" 
-  use:dndzone={{items, flipDurationMs}} 
-  on:consider={handleDndConsider} on:finalize={handleDndFinalize}
->
-  {#each items as item(item.id)}
+<div class="card card-side mx-10 my-10 bg-white/50 backdrop-blur-md">
+  <div class="flex flex-col gap-8 p-5">
+    <button class="btn" on:click={create}>Add</button>
+    <button class="btn" on:click={exportString}>Export</button>
+  </div>
+  <div class="card-body border-2 rounded-lg m-5 overflow-y-clip">
     <div 
-      animate:flip="{{duration: flipDurationMs}}" 
-      class="flex flex-row justify-items-stretch w-64 px-3 py-2 bg-neutral rounded-md"
-      style:margin-left={item.layers > 0 ? `${item.layers * 10}px` : "0"}
+      class="flex flex-col gap-3 mx-auto" 
+      use:dndzone={{items, flipDurationMs}} 
+      on:consider={handleDndConsider} on:finalize={handleDndFinalize}
     >
-      <p class="text-lg my-auto basis-1/2">{item.name}</p>
-      <div class="basis-1/2 justify-self-end">
-        {#if item.parent}
-          <button class="btn btn-ghost" on:click={moveLeft(item.name)}>
-            <Icon icon="bi:arrow-bar-left" />
+      {#each items as item(item.id)}
+        <div 
+          animate:flip="{{duration: flipDurationMs}}" 
+          class="flex flex-row justify-items-stretch w-fit px-3 py-2 bg-neutral rounded-lg"
+          style:margin-left={item.layers > 0 ? `${item.layers * 25}px` : "0"}
+        >
+          <button class="btn btn-ghost" on:click={remove(item.id)}>
+            <Icon icon="bi:x-circle" />
           </button>
-        {/if}
-        <button class="btn btn-ghost" on:click={moveRight(item.name)}>
-          <Icon icon="bi:arrow-bar-right" />
-        </button>
-      </div>
-      
+          <input type="text" bind:value={item.name} placeholder={item.name} class="input input-ghost basis-1/2" />
+          <div class="basis-1/2 justify-self-end">
+            {#if item.parent}
+              <button class="btn btn-ghost" on:click={moveLeft(item.id)}>
+                <Icon icon="bi:arrow-bar-left" />
+              </button>
+            {/if}
+            <button class="btn btn-ghost" on:click={moveRight(item.id)}>
+              <Icon icon="bi:arrow-bar-right" />
+            </button>
+          </div>
+          
+        </div>
+      {/each}  
     </div>
-  {/each}  
+  </div>
+  
 </div>
 
-<div class="flex flex-row gap-8">
-  <button class="btn" on:click={create}>Add</button>
-  <button class="btn" on:click={create}>Export</button>
-</div>
+
