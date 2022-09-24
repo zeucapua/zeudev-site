@@ -1,0 +1,78 @@
+---
+title: 'Make a Project Structure Display with SeeSRC'
+publishDate: '24 September 2022'
+layout: '../../layouts/BlogLayout.astro'
+---
+
+import BlogHeader from '../../components/BlogHeader.svelte';
+
+<BlogHeader title={frontmatter.title} publishDate={frontmatter.publishDate} />
+
+For the past few months I've been teaching myself web development, and that means that I've ran into code blogs.
+They are a wonderful source for learning about everything; opinions and first hand accounts as to what the industry looks like,
+what technologies are on demand, and most importantly, how to actually code stuff.
+
+Especially with more esoteric or niche problem you look up, it can get confusing as to where you should put your files. This is
+more important when it comes to web development since the file structure would be the make or break of your website. Now, there are
+people who use text formatting and symbols to show their project structure.
+
+==image==
+
+I LOVE IT. Whenever I follow tutorials or code snippets online, one of my biggest gripes as a self learner isn't the complexity of
+the code, but rather *where* it should go to see how the code relate to each other. So when I started to write coding tutorials,
+I wanted this for myself, but taking the time to format text like this is time consuming. And then I remembered: *I'm a programmer!* 
+I can do this! And I did it. Introducing...
+
+## SeeSRC: Easiest Way to Show your Project Files
+
+==image==
+
+You can try this tool for yourself at ==link==. 
+
+The goal of this project was to create a tool to create these project structure texts with proper formatting by moving each "route"
+in a drag and drop list. Each route can become a "folder" as long as it has a "child" underneath. Names and order can be changed by
+just clicking the name to type a new one and dragging the routes in the list.
+
+## What Technologies are being Used?
+
+The entire site is made in **Astro** which only renders HTML on the browser. Javascript is instead loaded in only when directed to.
+That allows the site to be much faster than a typical Javascript framework, like React or Angular. Another cool thing about
+Astro is that you can use any Javascipt UI component framework, from Vue to SolidJS. In my case, I like to use **Svelte** these days
+for it's clean and straightforward implementation.
+
+Further down the tech pile is what allows the containers to be moved easily with a mouse. **Svelte-dnd-actions** is what saved the
+project from having a billion more buttons in it's UI. This component allows the list to be flexible with the amount of items it has
+with fluid interactions using Svelte's built in ==transition:flip== and probably some magic! **Fakerjs** was also used to generate 
+randomized UUID's for the routes to use when inside a mutable list for responsive elements.
+
+The whole tool fits in only 1 Svelte file (and a small Astro file to wrap it into a page), with its logic and styling inside a little
+over 200 lines of code.
+
+## Interesting Challenges...
+
+I've built SeeSRC in only a few days, with technologies I'm still relatively new in. All this means is that I had to learn quick and
+implement fast. On top of researching about Astro and the svelte-dnd-actions documentation, I also had the logic of the program to figure
+out myself. 
+
+A solution, or setback if you see it that way, is that I only wanted to use a single dimension array with objects as the
+basis of the data. Since the tool needs to check which routes are folders and have children that need to be indented, I figured the way
+to limit the size of the data is to have the order dictated by their place in the array and the children are checked if they are
+correctly under their parent, in which case indented by how many layers deep they are. 
+
+==image==
+
+There are probably better ways to do this, most definitely just working with an array of objects with a "children" array inside, but
+it is done. With this in mind, the logic got a bit carried away to ensure that there are solutions to contingencies to possible problems
+with the routes' parentage and correct layer formatting. For example:
+
+==code==
+
+## Conclusion
+
+That's it for this SeeSRC overview. If you're interested in a tool like this, go ahead and visit ==link== and try it out for yourself.
+This was a pretty fun project to work on in the past few days. Constant and visible progress made me keep going, being proud of myself 
+and reminded me the fun in creating solutions through code. Programming is a wonderful skill I'm happy that I have.
+
+==call to action for blog/site/social medias==
+
+

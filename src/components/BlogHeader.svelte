@@ -9,7 +9,7 @@
   </a>
   <p class="text-4xl text-primary md:text-5xl font-['Radwave'] tracking-wide">{title}</p>
   <div class="flex py-3 flex-row gap-8 font-bold">
-    <p class="text-secondary">by Zeu Capua</p>
-    <p class="text-secondary">{publishDate}</p>
+    <p class="text-secondary font-['Radwave'] tracking-wider">by Zeu Capua</p>
+    <p class="text-secondary font-['Radwave'] tracking-wider">{publishDate}</p>
   </div>
 </div>
