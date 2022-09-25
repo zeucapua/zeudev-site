@@ -6,6 +6,7 @@
 
   // routes for CRUD
   let items = []; 
+  let result = "";
 
   // route CRUD functions
   function create() {
@@ -78,6 +79,7 @@
     items.forEach((item, index) => {
       if (index == 0) {
         item.parent = "";
+        item.layers = 0;
       } 
       else {
         let previous = items[index-1];
@@ -91,7 +93,7 @@
           }
           
         }
-        else if (item.parent == previous.name) {
+        else {
           item.layers = previous.layers + 1;
         }
       }
@@ -100,7 +102,7 @@
   }
   
   function exportString() {
-    let result = '';
+    result = '';
     items.forEach((item) => {
       if (item.layers > 0) {
         result += `${('   ').repeat(item.layers)}└─ /${item.name}\n`;
@@ -115,7 +117,7 @@
 </script>
 
 <div class="container w-full h-screen flex mx-auto">
-  <div class="flex flex-row border-2 rounded-lg w-full h-5/6 my-auto bg-base-100/60">
+  <div class="flex flex-row border-2 gap-8 rounded-lg w-full h-5/6 my-auto bg-base-100/60">
     
     <div class="flex flex-col h-full mx-auto p-5 basis-1/3">
       <a href="/">
@@ -147,14 +149,16 @@
         </li>
         <li>
           <div class="tooltip tooltip-bottom" data-tip="Export">
-            <button on:click={exportString}>
-              <Icon icon="bi:box-arrow-up-right" />
+            <button on:click={exportString} class="modal-button">
+              <label for="result-modal">
+                <Icon icon="bi:box-arrow-up-right" />
+              </label>
             </button>
           </div>
         </li>
       </ul>
 
-      <div class="alert alert-warning my-5">
+      <div class="alert alert-warning">
         <div>
           <Icon icon="bi:exclamation-triangle"/>
           <span>This tool is for desktop ONLY</span>
@@ -164,7 +168,7 @@
       <div class="divider"></div>
 
       <div class="w-full">
-        <p class="text-xl font-['Radwave'] text-secondary">Technologies used: </p>
+        <p class="text-xl font-['Radwave'] text-secondary">Technologies used </p>
         <ul class="list-disc list-inside mx-auto w-full">
           <li>
             <a class="link link-accent font-bold" target="_blank"
@@ -191,12 +195,19 @@
       </div>
 
       
-
-      <a class="btn btn-accent gap-8 mx-auto mt-5" target="_blank"
-        href="https://github.com/zeucapua/zeudev-site/blob/master/src/components/seesrc/SeeSRC.svelte">
-        <Icon icon="bi:github" />
-        How does Seesrc work?
-      </a>
+      <div class="flex flex-row gap-8">
+        <a class="btn btn-accent gap-8 mx-auto mt-5" target="_blank"
+          href="https://github.com/zeucapua/zeudev-site/blob/master/src/components/seesrc/SeeSRC.svelte">
+          <Icon icon="bi:github" />
+          Github
+        </a>
+        <a class="btn gap-8 mx-auto mt-5" target="_blank"
+          href="/blogs/seesrc_overview">
+          <Icon icon="bi:info-circle" />
+          Dev Blog
+        </a>
+      </div>
+      
     </div>
 
 
@@ -208,7 +219,7 @@
       {#each items as item(item.id)}
         <div 
           animate:flip="{{duration: flipDurationMs}}" 
-          class="flex flex-row justify-items-stretch w-fit px-3 py-2 bg-neutral rounded-lg"
+          class="flex flex-row justify-items-stretch w-fit px-3 py-2 bg-primary rounded-lg text-primary-content"
           style:margin-left={item.layers > 0 ? `${item.layers * 25}px` : "0"}
         >
           <button class="btn btn-ghost" on:click={remove(item.id)}>
@@ -235,3 +246,18 @@
 </div>
 
 
+
+<input type="checkbox" id="result-modal" class="modal-toggle hidden" />
+<div class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">Output</h3>
+    
+    <p class="text-md mb-3">Thank you for using the SeeSRC tool! Here's your file structure display:</p>
+    <textarea class="textarea textarea-primary resize" placeholder="Result" readonly>{result}</textarea>
+    
+    
+    <div class="modal-action">
+      <label for="result-modal" class="btn">Close</label>
+    </div>
+  </div>
+</div>
