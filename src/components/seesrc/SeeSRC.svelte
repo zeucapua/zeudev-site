@@ -120,7 +120,7 @@
   <div class="flex flex-row border-2 gap-8 rounded-lg w-full h-5/6 my-auto bg-base-100/60">
     
     <div class="flex flex-col h-full mx-auto p-5 basis-1/3">
-      <a href="/">
+      <a href="/portfolio">
         <p class="text-xl text-accent font-['Radwave'] mb-4">← Back</p>
       </a>
       

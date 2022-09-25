@@ -1,0 +1,28 @@
+---
+import Icon from "@iconify/svelte";
+import SiteLayout from "../layouts/SiteLayout.astro"
+---
+
+<SiteLayout title="About">
+  <div class="flex flex-col gap-8 w-full min-w-screen h-full min-h-screen p-16">
+    <a href="/">
+      <p class="text-xl text-accent font-['Radwave'] mb-4">← Back</p>
+    </a>
+    <div class="flex flex-col mx-auto gap-8">
+      <img class="mask mask-squircle w-64 h-64" src="pfp.jpg"/>
+      <p class="text-2xl font-['Radwave'] text-center tracking-wider">Zeu Capua</p>
+      <div class="flex flex-row gap-8 mx-auto">
+        <a href="https://linkedin.com/in/zeucapua" target="_blank"> 
+          <Icon icon="bi:linkedin" width="32" client:load /> 
+        </a>
+        <a href="https://github.com/zeucapua" target="_blank"> 
+          <Icon icon="bi:github" width="32" client:load /> 
+        </a>
+        <a href="https://instagram.com/retrozeu"  target="_blank"> 
+          <Icon icon="bi:instagram" width="32"client:load /> 
+        </a>
+      </div>
+    </div>
+    
+  </div>
+</SiteLayout>
