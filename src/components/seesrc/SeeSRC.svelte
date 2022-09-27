@@ -105,10 +105,10 @@
     result = '';
     items.forEach((item) => {
       if (item.layers > 0) {
-        result += `${('   ').repeat(item.layers)}└─ /${item.name}\n`;
+        result += `${('   ').repeat(item.layers)}└─ / ${item.name}\n`;
       }
       else {
-        result += `/${item.name}\n`;
+        result += `/ ${item.name}\n`;
       }
     });
     console.log(result);
@@ -121,7 +121,7 @@
     
     <div class="flex flex-col h-full mx-auto p-5 basis-1/3">
       <a href="/portfolio">
-        <p class="text-xl text-accent font-['Radwave'] mb-4">← Back</p>
+        <p class="text-xl text-accent font-['Radwave'] mb-4">← More</p>
       </a>
       
       <p class="text-5xl font-['Radwave'] text-primary">seesrc</p>

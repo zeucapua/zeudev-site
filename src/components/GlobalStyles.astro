@@ -4,18 +4,23 @@
   @tailwind utilities;
 
   @font-face {
-    font-family: 'Comico';
-    src: url('/fonts/Comico-Regular.otf');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
     font-family: 'Radwave';
     src: url('/fonts/RadwaveFont_Demo.otf');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
+  }
+
+  #outline {
+    color: transparent;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: white;
+    transition-duration: 150ms;
+  }
+
+  #outline:hover {
+    color: #e779c1;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: #e779c1;
   }
 </style>

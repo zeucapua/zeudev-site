@@ -1,35 +1,19 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import GlobalStyles from "../components/GlobalStyles.astro";
 ---
 <SiteLayout title="Index">
   <div class="flex flex-col w-full h-full gap-8">
     
     <p class="text-5xl lg:text-9xl font-['Radwave'] select-none">Zeu.Dev</p>
     <a href="/blogs">
-      <p id="outline" class="text-5xl lg:text-9xl font-['Radwave'] cursor-pointer select-none">Blog</p>
+      <p id="outline" class="text-5xl lg:text-9xl font-['Radwave'] cursor-pointer select-none text-white hover:text-primary transition-colors duration-300">Blog</p>
     </a>
     <a href="/portfolio">
-      <p id="outline" class="text-5xl lg:text-9xl font-['Radwave'] cursor-pointer select-none">Portfolio</p>
+      <p id="outline" class="text-5xl lg:text-9xl font-['Radwave'] cursor-pointer select-none text-white hover:text-secondary transition-colors duration-300">Portfolio</p>
     </a>
     <a href="/about">
-      <p id="outline" class="text-5xl lg:text-9xl font-['Radwave'] cursor-pointer select-none">About</p>
+      <p id="outline" class="text-5xl lg:text-9xl font-['Radwave'] cursor-pointer select-none text-white hover:text-accent transition-colors duration-300">About</p>
     </a>
   </div>
   
 </SiteLayout>
-
-<style>
-  #outline {
-    color: transparent;
-    -webkit-text-stroke-width: 3px;
-    -webkit-text-stroke-color: white;
-    transition-duration: 150ms;
-  }
-
-  #outline:hover {
-    color: #e779c1;
-    -webkit-text-stroke-width: 3px;
-    -webkit-text-stroke-color: #e779c1;
-  }
-</style>

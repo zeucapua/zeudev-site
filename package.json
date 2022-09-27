@@ -14,6 +14,7 @@
     "@astrojs/mdx": "^0.11.1",
     "@astrojs/svelte": "^1.0.0",
     "@astrojs/tailwind": "^2.0.1",
+    "@swup/fade-theme": "^1.0.5",
     "astro": "^1.2.5",
     "daisyui": "^2.27.0",
     "svelte": "^3.50.1",
@@ -22,6 +23,7 @@
   "devDependencies": {
     "@faker-js/faker": "^7.5.0",
     "@iconify/svelte": "^3.0.0",
+    "@swup/a11y-plugin": "^2.1.0",
     "@tailwindcss/typography": "^0.5.7",
     "svelte-dnd-action": "^0.9.20",
     "swup": "^2.0.19"

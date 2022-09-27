@@ -4,6 +4,17 @@ import GlobalStyles from "../components/GlobalStyles.astro";
 const {title} = Astro.props;
 ---
 
+<script>
+  import Swup from 'swup';
+  import SwupA11yPlugin from '@swup/a11y-plugin';
+  import SwupFadeTheme from '@swup/fade-theme';
+
+  const swup = new Swup({
+    plugins: [new SwupA11yPlugin(), new SwupFadeTheme()]
+  })
+
+</script>
+
 <html lang="en" data-theme="synthwave">
   <head>
     <meta charset="utf-8">
@@ -12,30 +23,10 @@ const {title} = Astro.props;
     <title>{title === "Index" ? "zeu.dev" : title + " | zeu.dev"}</title>
   </head>
   <body>
-    
-      <div class="flex flex-col w-full min-w-screen h-full min-h-screen bg-[url('/4.jpg')] bg-cover bg-transparent bg-fixed">
-        <main id="swup" class="transition-fade">
-          <slot />
-        </main>
+    <div class="w-full min-w-screen h-full min-h-screen bg-[url('/4.jpg')] bg-cover bg-transparent bg-fixed">
+      <div id="swup" class="wrapper">
+        <slot />
       </div>
-      
-    
+    </div>
   </body>
 </html>
-
-<script>
-  import Swup from 'swup';
-  const swup = new Swup();
-</script>
-
-<style>
-  .transition-fade {
-    transition: 0.25s;
-    opacity: 1;
-  }
-
-  html.is-animating .transition-fade {
-    opacity: 0;
-  }
-
-</style>

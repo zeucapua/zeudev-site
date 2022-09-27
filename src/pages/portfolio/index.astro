@@ -1,8 +1,44 @@
 ---
 import SiteLayout from "../../layouts/SiteLayout.astro"
+import PortfolioCard from "../../components/PortfolioCard.astro";
+
+let portfolio = [
+  {
+    name:"SeeSRC", 
+    description:"Show your project and file structure easily for your blog/tutorial.",
+    img:"blog_assets/seesrc_screenshot.png",
+    link: "/portfolio/seesrc"
+  },
+  {
+    name:"Progressive Victory", 
+    description:"Lead Front-end web developer for a progressive political organization, aimed to get young online people to take political action.",
+    img:"pv22_banner.png",
+    link: "https://progressivevictory.win"
+  },
+  {
+    name:"zeu.dev", 
+    description:"This website and blog, filled with (almost) everything about me coding.",
+    img:"zeudevsite_screenshot.png",
+    link: "/"
+  },
+]
 
 ---
 
 <SiteLayout title="Portfolio">
-  
+  <div class="flex flex-col w-full min-w-screen p-8">
+    <a href="/">
+      <p class="text-xl text-accent font-['Radwave'] mb-4 mx-8">← Home</p>
+    </a>
+    <div class="px-8">
+      <p class="text-4xl lg:text-6xl font-['Radwave'] text-primary mx-auto">Portfolio</p>
+      <span class="block mt-1 max-w-full h-1 bg-primary mb-8"></span>
+    </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-3 lg:grid-flow-row gap-8">
+      {
+        portfolio.map((p) => <PortfolioCard {...p} />)
+      }
+    </div>
+  </div>
 </SiteLayout>

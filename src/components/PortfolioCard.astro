@@ -1,0 +1,14 @@
+---
+const {name, description, img, link} = Astro.props;
+---
+<a href={link} target="_blank">
+  <div class="group flex flex-col border-4 rounded-lg w-4/5 mx-auto h-full bg-base-100/50 backdrop-blur-sm">
+    <img src={img} alt={name} class="rounded-t-lg basis-2/3" />
+    <div class="p-8 basis-1/3 rounded-b-lg">
+      <p class="text-xl font-['Radwave'] tracking-wider text-white group-hover:text-primary transition-all duration-300">{name}</p>
+      <span class="block mt-1 max-w-0 group-hover:max-w-full h-1 bg-primary transition-all duration-300"></span>
+      <p>{description}</p>
+    </div>
+    
+  </div>
+</a>

@@ -1,0 +1,144 @@
+---
+title: 'Astro + Local Fonts: How to Install with TailwindCSS'
+publishDate: '26 September 2022'
+layout: '../../layouts/BlogLayout.astro'
+---
+
+import BlogHeader from '../../components/BlogHeader.svelte';
+
+<BlogHeader title={frontmatter.title} publishDate={frontmatter.publishDate} />
+
+Astro is a web framework that aims to ship the least amount of Javascript. It allows people to
+create static sites with the ability to create components with any of your favorite Javascript
+UI frameworks like React and Svelte. This setup added with the native MDX integration that turns
+markdown files to separate pages is the perfect frontend framework for blogging.
+
+Now styling is important since it's one of the first things a visitor will see
+about your site. Fonts come in to help make your text more beautiful and thankfully Astro
+does have a section on their documentation on how to use a local font. Unfortunately, when
+looking into integrating it with tailwindcss, you only get paragraph.
+
+> If you are using the Tailwind integration, you can either add an **@font-face** statement for a local font or use Fontsource's 
+> import strategy to register your font. Then, follow Tailwind's docs on adding custom font families.
+
+I mean, yes that does explain it. But it's not very clear. So here is a tutorial on how to use local
+fonts in Astro using tailwindcss.
+
+## Project Structure
+```
+/ public
+   └─ / fonts
+      └─ / RadwaveFont_Demo.otf
+/ src
+   └─ / components
+      └─ / GlobalStyles.astro
+   └─ / pages
+      └─ / index.astro
+   └─ / layouts
+      └─ / SiteLayout.astro
+```
+
+
+
+For this tutorial, I'm going to assume that you have...
+1. an Astro project ready to go. If not, use their minimal starter project by doing `npm create astro@latest`.
+2. the TailwindCSS integration installed. If not, install using `npx astro add tailwind` or `npm install @astrojs/tailwind tailwindcss`. Follow the rest of the setup guide [here](https://docs.astro.build/en/guides/integrations-guide/tailwind/).
+3. a local font file to use. For this tutorial we will be using <a href="https://indieground.net/product/radwave-font/" target="_blank">Radwave Font from Indieground Design</a>.
+
+The goal here to import the font into a style tag, which will be inside the `GlobalStyles.astro` 
+file, which will be referenced in a layout that will wrap every page, 
+therefore allowing accessing to the font. We will then use tailwindcss' arbitrary 
+values option when styling a text element.
+
+
+## Move the Font in Position
+Now there are multiple ways of adding a font into a web project, like installing an npm package,
+but for now, we'll focus on using a local font that will live inside your source code. In this
+case, we will the font into the public folder. For my case, I also put it into a separate fonts
+folder to keep things neat and tidy.
+
+
+## Using `@font-face` to Install Font
+Next is to create the `GlobalStyles.astro` file inside a components folder under src.
+Inside we will install the tailwind directives and the font using `@font-face`
+
+```astro
+<style is:global>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  @font-face {
+    font-family: 'Radwave';
+    src: url('/fonts/RadwaveFont_Demo.otf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  ...
+</style>
+```
+
+Astro has a built in `is:global` directive for any style tags inside an Astro component. This
+in theory is enough to have the font usable throughout the website, but putting this in any
+component is not sufficient. So to mitigate this, we will reference this file inside a layout.
+
+## Creating a Global Layout
+
+Layouts in Astro allow the developer to use the same basic template across multiple pages.
+Any HTML, CSS, or Javascript that you want in every page (like a navigation bar) can be put in
+a layout and then in each page, create an element from that layout and code inside. With that
+said, let's make this `SiteLayout.astro` file.
+
+```astro
+---
+import GlobalStyles from "../components/GlobalStyles.astro"
+---
+<html>
+  <head>...some code</head>
+  <body>
+    <slot />
+    ...some code
+  </body>
+</html>
+```
+
+Here we can see two things, the import and slot tag. In Astro, any imports have to go inside
+a code fence (`---`), which was directly inspired by Markdown's frontmatter (just a fun fact).
+Since we are importing the `GlobalStyles.astro` file into a layout that will be used sitewide,
+that means that the font declaration is able to be used. 
+
+The other thing to look at is the slot tag. It (`<slot />`) is where anything wrapped inside this
+component. That means any pages to be made will have its content inside the the layout's tags.
+So let's put it all together and finally we get to use tailwind!
+
+## Using Astro Layouts and TailwindCSS for Local Font
+
+For this tutorial we are only using one page, `index.astro`, and one p tag. This should work on multiple
+pages as long as you use the `SiteLayout` to wrap your content in and <u>**make sure that you are using the correct path**</u>.
+* If for instance you have page in `src/pages/blogs/index.astro`, import using `../../layouts/SiteLayout.astro`.
+
+Let's make this page! See how the page's content, in this case a `<p>` tag saying hello. That's
+what's the `<slot />` tag is substituing for in the `SiteLayout.astro` file. And here we finally
+get to use tailwindcss. 
+
+```astro
+---
+import SiteLayout from "../layouts/SiteLayout.astro"
+---
+<SiteLayout>
+  <p class="font-['Radwave']">Hello!</p>
+</SiteLayout>
+```
+
+What to pay attention to here is the use of tailwindcss' arbitrary property in styling for the font family.
+Every tag that you want to change the font of will need to use this and making sure it is the
+same name as the **font-family** inside the `@font-face` declaration earlier.
+
+## Conclusion
+
+And that's it! Now you have a functional website with local fonts enabled to be used via
+tailwindcss. If you've made it this far, thank you so much for reading my tutorial. Read more
+at [zeudev.vercel.app/blogs](https://zeudev.vercel.app/blogs). I hope this made your coding
+day better, even if it's by a tiny bit.
