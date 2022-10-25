@@ -4,16 +4,7 @@ import GlobalStyles from "../components/GlobalStyles.astro";
 const {title} = Astro.props;
 ---
 
-<script>
-  import Swup from 'swup';
-  import SwupA11yPlugin from '@swup/a11y-plugin';
-  import SwupFadeTheme from '@swup/fade-theme';
 
-  const swup = new Swup({
-    plugins: [new SwupA11yPlugin(), new SwupFadeTheme()]
-  })
-
-</script>
 
 <html lang="en" data-theme="synthwave">
   <head>
@@ -30,3 +21,15 @@ const {title} = Astro.props;
     </div>
   </body>
 </html>
+
+
+<script>
+  import Swup from 'swup';
+  import SwupA11yPlugin from '@swup/a11y-plugin';
+  import SwupFadeTheme from '@swup/fade-theme';
+
+  const swup = new Swup({
+    plugins: [new SwupA11yPlugin(), new SwupFadeTheme()]
+  })
+
+</script>
