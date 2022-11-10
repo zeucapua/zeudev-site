@@ -21,6 +21,13 @@
       link: "/portfolio/trailtooregon/#main",
       tags: ["Svelte", "TailwindCSS", "Snippet", "One-Page"],
     },
+    {
+      title: "Potatonet",
+      description: "Database of fun and interesting websites to encourage exploration outside of platforms",
+      screenshot: "/images/potatonet-screenshot.png",
+      link: "https://potatonet.vercel.app",
+      tags: ["In Development","Svelte", "TailwindCSS", "Firebase", "Website"],
+    },
  
 ]
 </script>
