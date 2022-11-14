@@ -15,6 +15,14 @@
       tags: ["Svelte", "TailwindCSS", "Snippet"],
     },
     {
+      title: "Tech Co.",
+      description: "A landing page worthy of a modern tech company, using Svelte and Three.js (via Threlte)",
+      screenshot: "/images/techco-screenshot.png",
+      link: "/portfolio/techco/#main",
+      tags: ["Svelte", "TailwindCSS", "Three.js", "Threlte", "Snippet"],
+    },
+    
+    {
       title: "Trail to Oregon",
       description: "A fun western themed one-pager for Starkid musical Trail to Oregon.",
       screenshot: "/images/tto-screenshot.png",
