@@ -3,7 +3,7 @@
 </script>
 
 
-<div class="flex flex-col w-full min-w-screen h-full min-h-screen text-white p-16">
+<div class="flex flex-col w-full min-w-screen h-full text-white p-16">
     <div class="flex flex-row mx-auto gap-8">
         <div class="w-16 h-16 rounded-full bg-[#e779c1]" />
         <div class="w-16 h-16 rounded-full bg-[#58c7f3]" />

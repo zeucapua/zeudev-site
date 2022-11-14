@@ -1,7 +1,7 @@
 <script lang="ts"> 
     import Icon from '@iconify/svelte'; 
 </script> 
-<div class="flex flex-col w-full min-w-screen h-full min-h-screen p-16 text-white"> 
+<div class="flex flex-col w-full min-w-screen h-full p-16 text-white"> 
     <div class="flex flex-row w-fit gap-8"> 
         <p class="text-8xl font-['GeneralSans'] font-bold">Let's Talk</p> 
         <div class="w-16 h-16 m-auto rounded-full bg-[#e779c1]" /> 
