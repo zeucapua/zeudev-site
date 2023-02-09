@@ -1,35 +1,39 @@
 <script lang="ts">
-    import Icon from '@iconify/svelte';
+  import { onMount } from "svelte";
+  import { fly } from "svelte/transition";
+  let loaded = false;
+
+  onMount(() => { loaded = true });
 </script>
 
 
 <div class="flex flex-col w-full min-w-screen h-full text-white p-16">
-    <div class="flex flex-row mx-auto gap-8">
-        <div class="w-16 h-16 rounded-full bg-[#e779c1]" />
-        <div class="w-16 h-16 rounded-full bg-[#58c7f3]" />
-        <div class="w-16 h-16 rounded-full bg-[#f3cc30]" />
+  {#if loaded}
+    <div class="flex flex-row justify-around md:justify-center mx-auto gap-4">
+      <div 
+        in:fly={{duration: 1000, delay: 1250}} 
+        out:fly={{duration: 1000}}
+        class="w-16 h-16 md:w-48 md:h-48 rounded-full bg-[#e779c1]" />
+      <div 
+        in:fly={{duration: 1000, delay: 1500}}
+        out:fly={{duration: 1000}}
+        class="w-16 h-16 md:w-48 md:h-48 rounded-full bg-[#58c7f3]" />
+      <div 
+        in:fly={{duration: 1000, delay: 1750}}
+        out:fly={{duration: 1000}}
+        class="w-16 h-16 md:w-48 md:h-48 rounded-full bg-[#f3cc30]" />
     </div>
-    
-
-    <p class="font-['GeneralSans'] text-7xl font-bold text-center mt-16">
-        Hello, I'm Zeu!
-    </p>
-    <p class="font-['GeneralSans'] text-7xl font-bold text-center">
-        A Front-end Developer, Designer, and Educator
-    </p>
-    <p class="text-3xl text-center font-['Quicksand'] my-16">
-        Keeping the user experience in mind will always result in beautiful designs and amazing solutions under the hood. That's what I aim to do.
-    </p>
-
-    <div class="flex flex-row mx-auto gap-8 text-6xl">
-        <a href="https://github.com/zeucapua">
-            <Icon icon="bi:github" class="text-white hover:text-[#e779c1]" />
-        </a>
-        <a href="https://linkedin.com/in/zeucapua">
-            <Icon icon="bi:linkedin" class="text-white hover:text-[#58c7f3]" />
-        </a>
-        <a href="https://twitter.com/zeu_dev">
-            <Icon icon="bi:twitter" class="text-white hover:text-[#f3cc30]" />
-        </a>
+    <div class="flex flex-col my-8 mx-auto text-center">
+      <p 
+        in:fly={{duration: 1000, delay: 2000}}
+        out:fly={{duration: 1000}}
+        class="text-6xl text-white font-quicksand"
+      >
+        Hello, I'm Zeu. I make websites for clients, and aim to write and create content
+        to make web development easier and accessible.
+      </p>
+      
     </div>
+  {/if}
 </div>
+

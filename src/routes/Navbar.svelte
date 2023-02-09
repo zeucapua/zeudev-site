@@ -6,7 +6,7 @@
     <a href="/portfolio">
       <p class="hover:text-[#e779c1] transition-all duration-300">portfolio</p>
     </a>
-    <a href="/">
+    <a href="/blogs">
       <p class="hover:text-[#58c7f3] transition-all duration-300">blogs</p>
     </a>
     <a href="/contact">

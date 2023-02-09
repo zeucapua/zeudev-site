@@ -2,7 +2,11 @@
 module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        "quicksand": ["Quicksand"],
+      }
+    },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 }
