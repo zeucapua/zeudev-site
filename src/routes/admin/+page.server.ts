@@ -18,7 +18,9 @@ export const actions : Actions = {
     const data = await request.formData();
     const secret = data.get("secret");
     
-    cookies.set("sessionid", secret === ADMIN_SECRET);
+    cookies.set("sessionid", secret === ADMIN_SECRET, {
+      maxAge: 60 * 60,
+    });
     throw redirect(302, "/admin");
   },
   logout: async ({ cookies }) => {
@@ -32,5 +34,13 @@ export const actions : Actions = {
       data: { title: title }
     }); 
     throw redirect(302, `/admin/${post.id}`)
+  },
+  deleteBlog: async ({ request }) => {
+    const data = await request.formData();
+    const id = data.get("id");
+
+    const response = await prisma.post.delete({
+      where: { id: id }
+    });
   }
 }

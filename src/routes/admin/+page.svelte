@@ -2,9 +2,10 @@
   import type { PageData } from "./$types";
 
   export let data : PageData;
-  $: session = data.sessionid;
-  $: posts = data.posts;
-  $: console.log({posts});
+  let session = data.sessionid;
+  let posts = data.posts;
+
+  $: console.log({ posts });
 </script>
 
 <main class="flex flex-col w-full min-w-screen h-full min-h-screen p-16 gap-8 bg-black"> 
@@ -27,11 +28,23 @@
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
       {#each posts as post}
-        <article class="flex flex-col text-white border border-white rounded-md p-8">
+        <article class="flex flex-col justify-between text-white border border-white rounded-md p-8">
           <p class="text-3xl font-bold font-quicksand">{post.title}</p> 
           {#if post.content}
             <p class="font-quicksand line-clamp-3">{post.content}</p> 
           {/if}
+          <div class="items-center self-end flex flex-row gap-8">
+            {#if post.published} 
+              <div class="rounded-full w-4 h-4 bg-[#58c7f3]"></div>
+            {/if}
+            <form method="POST" action="?/deleteBlog">
+              <input name="id" type="hidden" value={post.id} />
+              <button>Delete</button>
+            </form>
+            <a href={`/admin/${post.id}`}>
+              <button>Edit</button>
+            </a>
+          </div>
         </article>
       {/each}
       <form 
