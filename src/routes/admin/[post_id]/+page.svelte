@@ -5,6 +5,7 @@
   export let data : PageData;
   let post = data.post;
   let preview = false;
+  let content = post.content;
 
 </script>
 
@@ -42,11 +43,11 @@
 
   {#if preview}
     <article class="prose prose-invert h-full grow">
-      <Markdown md={post.content} />
+      <Markdown md={content} />
     </article>
   {:else}
     <textarea 
-      name="content" value={post.content} 
+      name="content" bind:value={content}
       class="border-4 border-white p-8 text-white bg-black text-xl rounded-xl h-full grow"
     />
   {/if}
