@@ -1,7 +1,7 @@
 import { prisma } from "$lib/prisma";
-import type { Actions, PageLoad } from "./$types";
+import type { Actions, PageServerLoad } from "./$types";
 
-export async function load({ params }) : PageLoad {
+export async function load({ params }) : PageServerLoad {
   const id = params.post_id;
   const post = await prisma.post.findUnique({
     where: { id: parseInt(id) }

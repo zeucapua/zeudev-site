@@ -1,4 +1,4 @@
-<div class="flex w-full h-24 bg-black px-8 tracking-wider text-md md:text-2xl text-white shadow-lg">
+<div class="flex w-full h-24 bg-neutral-900 px-8 tracking-wider text-md md:text-2xl text-white shadow-lg">
   <div class="flex flex-row gap-8 md:gap-12 my-auto mx-auto font-['Quicksand'] font-bold">
     <a href="/">
       <p class="font-['GeneralSans'] tracking-widest">zeu.dev</p>
