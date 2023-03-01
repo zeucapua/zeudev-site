@@ -40,7 +40,8 @@ export const actions : Actions = {
     const id = data.get("id");
 
     const response = await prisma.post.delete({
-      where: { id: id }
+      where: { id: parseInt(id) }
     });
+    throw redirect(302, "/admin");
   }
 }
