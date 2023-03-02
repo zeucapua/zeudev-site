@@ -27,8 +27,8 @@
 <div id="menu" class={menuStyle} style="background-color: {themeColor};">
 
   <div id="top-links" class="flex flex-row w-full justify-between z-20">
-    <a href='/portfolio' class={sideItemStyle}>ACME</a>
-    <a href='/portfolio' class={sideItemStyle}>Close</a>
+    <a href='/' class={sideItemStyle}>ACME</a>
+    <a href='/' class={sideItemStyle}>Close</a>
   </div>
 
   <div id="menu-items" class="flex flex-col grow justify-evenly z-20">
@@ -73,7 +73,7 @@
 
   <div id="bottom-links" class="flex flex-row w-full justify-between z-20">
     <a href='https://www.daniellelevitt.com' class={sideItemStyle}>Inspiration - Danielle Levitt</a>
-    <a href='/portfolio' class={sideItemStyle}>Coded by Zeu Capua</a>
+    <a href='/' class={sideItemStyle}>Coded by Zeu Capua</a>
   </div>
 
 

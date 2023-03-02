@@ -23,7 +23,6 @@
 		"eslint": "^8.16.0",
 		"eslint-plugin-svelte3": "^4.0.0",
 		"postcss": "^8.4.18",
-		"prisma": "^4.10.1",
 		"svelte": "^3.44.0",
 		"svelte-check": "^2.7.1",
 		"svelte-intersection-observer": "^0.10.0",
@@ -35,7 +34,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@prisma/client": "^4.10.1",
 		"@threlte/core": "^4.3.3",
 		"@threlte/extras": "^4.5.1",
 		"svelte-exmarkdown": "^1.1.8",
