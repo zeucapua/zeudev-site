@@ -2,11 +2,11 @@
   import { onMount } from "svelte";
   import Icon from "@iconify/svelte";
   import { fly } from "svelte/transition";
-  import IntersectionObserver from "svelte-intersection-observer";
+  import ContactSection from "$lib/ContactSection.svelte";
+  import ProjectSection from "$lib/ProjectSection.svelte";
+
 
   let loaded = false;
-  let contact : HTMLElement;
-  let intersecting : boolean;
 
   const works = [
     {
@@ -99,92 +99,8 @@
     </div>
   </section>
 
-
-  <div class="flex flex-col gap-8 py-8 text-white">
-    <p 
-      in:fly={{duration: 1000, delay: 2000}}
-      out:fly={{duration: 1000}}
-      class="text-3xl lg:text-7xl underline underline-offset-8 text-center font-['GeneralSans']" 
-    >
-      Projects
-    </p>
-    {#each works as {title, description, screenshot, link, tags}, i}
-      <a href={link}>
-        <div 
-          in:fly={{duration: 1000, delay: 2250 + (250 * i)}}
-          out:fly={{duration: 1000}}
-          class="flex flex-col md:flex-row p-8 group hover:bg-[#f3cc30] transition-all duration-300 hover:text-black"
-        >
-          <img 
-            src={screenshot} 
-            alt={title} 
-            class="aspect-[4/3] object-cover w-full md:w-1/2" 
-          />
-          <div class="flex flex-col pt-4 md:pt-0 md:px-4 w-full md:basis-1/2 justify-end gap-2">
-            <div class="flex flex-row gap-4 flex-wrap">
-              {#each tags as tag}
-              <p class="px-4 py-1 text-sm rounded-full border-2 group-hover:border-black select-none">
-                {tag}
-              </p>
-              {/each}
-            </div>
-            <p class="font-['GeneralSans'] text-5xl md:text-7xl font-bold tracking-wide">{title}</p>
-            <p class="font-['Quicksand'] text-xl md:text-2xl">{description}</p>
-          </div>
-        </div>
-      </a>
-    {/each}
-  </div>
-
-
-  <IntersectionObserver element={contact} bind:intersecting>
-    <section id="contact" bind:this={contact} class="p-16">
-    {#if intersecting}
-    <div class="flex flex-col lg:flex-row w-fit gap-8 mx-auto"> 
-      <p 
-        in:fly={{duration: 1000, delay: 1000}}
-        out:fly={{duration: 1000}}
-        class="text-8xl font-['GeneralSans'] font-bold"
-      >
-        Let's Talk
-      </p> 
-      <section class="flex flex-row justify-center gap-4">
-        <div 
-          in:fly={{duration: 1000, delay: 1250}}
-          out:fly={{duration: 1000}}
-          class="w-16 h-16 m-auto rounded-full bg-[#e779c1]" /> 
-        <div 
-          in:fly={{duration: 1000, delay: 1500}}
-          out:fly={{duration: 1000}}
-          class="w-16 h-16 m-auto rounded-full bg-[#f3cc30]" /> 
-        <div 
-          in:fly={{duration: 1000, delay: 1750}}
-          out:fly={{duration: 1000}}
-          class="w-16 h-16 m-auto rounded-full bg-[#58c7f3]" /> 
-        </section>
-    </div>
-    <div 
-      in:fly={{duration: 1000, delay: 1750}}
-      out:fly={{duration: 1000}}
-    >
-      <p class="text-2xl text-center my-8 font-['Quicksand']">
-        Under Construction. Contact me on my socials:
-      </p> 
-      <div class="flex flex-row gap-8 text-6xl justify-center"> 
-        <a href="https://github.com/zeucapua">
-          <Icon icon="bi:github" class="text-white hover:text-[#e779c1]" />
-        </a>
-        <a href="https://linkedin.com/in/zeucapua">
-          <Icon icon="bi:linkedin" class="text-white hover:text-[#f3cc30]" />
-        </a>
-        <a href="https://twitter.com/zeu_dev">
-          <Icon icon="bi:twitter" class="text-white hover:text-[#58c7f3]" />
-        </a>
-      </div>     
-    </div>
-    {/if}
-    </section>
-  </IntersectionObserver>
+  <ProjectSection />
+  <ContactSection /> 
 
   {/if}
 </div>
