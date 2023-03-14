@@ -37,6 +37,8 @@
 		"@threlte/core": "^4.3.3",
 		"@threlte/extras": "^4.5.1",
 		"svelte-exmarkdown": "^1.1.8",
-		"three": "^0.146.0"
+		"three": "^0.146.0",
+		"trace-svelte": "^0.0.4",
+		"typew": "^0.0.2"
 	}
 }

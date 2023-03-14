@@ -1,47 +1,19 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import Icon from "@iconify/svelte";
   import { fly } from "svelte/transition";
+
+  import Icon from "@iconify/svelte";
   import ContactSection from "$lib/ContactSection.svelte";
   import ProjectSection from "$lib/ProjectSection.svelte";
 
-
   let loaded = false;
 
-  const works = [
-    {
-      title: "Progressive Victory",
-      description: "Currently being remade in Astro. Designed and developed for an online community dedicated to getting young voters out for elections.",
-      screenshot: "/images/PV22_Banner.png",
-      link: "https://progressivevictory.win",
-      tags: ["NextJS", "React", "Astro", "TailwindCSS", "Website"],
-    },
-    {
-      title: "Modern Menu",
-      description: "A recreation of Danielle Levitt's beautiful menu with pictures front in center.",
-      screenshot: "/images/modernmenu-screenshot.png",
-      link: "/modernmenu/#menu",
-      tags: ["Svelte", "TailwindCSS", "Snippet"],
-    },
-    {
-      title: "Tech Co.",
-      description: "A landing page worthy of a modern tech company, using Svelte and Three.js (via Threlte)",
-      screenshot: "/images/techco-screenshot.png",
-      link: "/techco/#main",
-      tags: ["Svelte", "TailwindCSS", "Three.js", "Threlte", "Snippet"],
-    },
-    
-    {
-      title: "Trail to Oregon",
-      description: "A fun western themed one-pager for Starkid musical Trail to Oregon.",
-      screenshot: "/images/tto-screenshot.png",
-      link: "/trailtooregon/#main",
-      tags: ["Svelte", "TailwindCSS", "Snippet", "One-Page"],
-    },
-  ];
   onMount(() => { loaded = true });
 </script>
 
+<svelte:head>
+  <title>Zeu Capua - Full Stack Developer</title>
+</svelte:head>
 
 <div class="flex flex-col w-full min-w-screen h-full text-white ">
   {#if loaded}
