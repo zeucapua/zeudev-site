@@ -3,7 +3,7 @@
   import Icon from "@iconify/svelte";
 </script>
 
-<section id="contact" class="p-16">
+<section id="contact" class="p-8">
   <div class="flex flex-col lg:flex-row w-fit gap-8 mx-auto"> 
     <p 
       in:fly={{duration: 1000, delay: 1000}}

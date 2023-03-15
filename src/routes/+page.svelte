@@ -15,14 +15,14 @@
   <title>Zeu Capua - Full Stack Developer</title>
 </svelte:head>
 
-<div class="flex flex-col w-full min-w-screen h-full text-white ">
+<div class="flex flex-col w-full min-w-screen h-full text-white p-8">
   {#if loaded}
   <section 
     in:fly={{duration: 1000, delay: 1000}}
     out:fly={{duration: 1000}}
     class="flex flex-row justify-center gap-8 w-fit px-8 py-4 my-8 mx-auto rounded-xl bg-[#e779c1]"
   >
-    <p class="text-black font-bold font-quicksand">Quick Links:</p>
+    <p class="text-md text-black font-bold font-quicksand">Quick Links:</p>
     <a 
       href="https://thethinks.vercel.app" 
       class="text-black font-quicksand hover:underline transition-all duration-300"
@@ -37,7 +37,7 @@
     </a>
   </section>
 
-  <section class="flex flex-col gap-8 p-16">
+  <section class="flex flex-col gap-8 p-0 lg:p-8">
     <div class="flex flex-row justify-around w-fit md:justify-center mx-auto gap-8">
       <div 
         in:fly={{duration: 1000, delay: 1250}} 
@@ -56,9 +56,14 @@
       <p 
         in:fly={{duration: 1000, delay: 2000}}
         out:fly={{duration: 1000}}
-        class="text-3xl lg:text-6xl text-white font-quicksand"
+        class="font-bold font-['GeneralSans'] text-4xl lg:text-7xl text-center text-white">
+        Hello, I'm Zeu.
+      </p>
+      <p 
+        in:fly={{duration: 1000, delay: 2000}}
+        out:fly={{duration: 1000}}
+        class="text-3xl lg:text-6xl font-thin w-full max-w-5xl text-white font-quicksand"
       >
-        Hello, I'm <span class="font-bold">Zeu</span>. 
         I make websites for clients, and aim to write and create content
         to make web development easier and accessible.
       </p>
