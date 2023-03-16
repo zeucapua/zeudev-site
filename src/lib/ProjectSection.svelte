@@ -1,5 +1,35 @@
 <script lang="ts">
+  import Icon from "@iconify/svelte";
   import { fly } from "svelte/transition";
+  import { Trace, TLine } from "trace-svelte";
+  import { Typewriter, Text, Wait } from "typew";
+
+  let step = 0;
+  let highlights = [
+    [],
+    [1],
+    [1,3],
+    [2]
+  ];
+  let playing = false;
+  let play_interval : ReturnType<typeof setInterval>; 
+  function increment() {
+    if (step < highlights.length - 1) {
+      step += 1;
+    }
+    else {
+      togglePlaying();
+      step = 0;
+    }
+  }
+  function togglePlaying() { playing = !playing; }
+  $: {
+    if (!playing) { clearInterval(play_interval); }
+    else {
+      play_interval = setInterval(increment, 1250); 
+    }
+  }
+
 
   const works = [
     {
@@ -76,7 +106,11 @@
   ];
 </script>
 
-<section class="flex flex-col w-full h-full p-0 lg:p-8 gap-8">
+<section 
+  in:fly={{duration: 1000, delay: 2500}}
+  out:fly={{duration: 1000}}
+  class="flex flex-col w-full max-w-7xl h-full mx-auto p-0 lg:p-8 gap-8"
+>
   <h2 class="text-4xl lg:text-5xl font-generalsans font-bold">Projects</h2>
   <div class="flex flex-col lg:flex-row gap-8 lg:overflow-x-auto">
     {#each works as w}
@@ -95,10 +129,68 @@
   </div>
 
   <h2 class="text-4xl lg:text-5xl font-generalsans font-bold">Packages</h2>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 grid-flow-row">
+
+    <div class="flex flex-col lg:flex-row divide-y-2 lg:divide-y-0 lg:divide-x-2 gap-8 mx-auto border-white border rounded-xl p-8 w-full h-full">
+      <div class="font-quicksand text-3xl text-center self-center basis-1/2">
+        <Typewriter autoplay loop>
+          <Text content="Hello" />
+          <Wait duration={1000} />
+          <Text content="World!" />
+          <Wait duration={1000} />
+        </Typewriter>
+      </div>
+      <div class="flex flex-col gap-4 px-4 py-4 lg:py-0">
+        <h3 class="text-3xl font-generalsans font-bold">typew</h3>
+        <p class="text-xl font-quicksand">An intuitive typewriter effect for your Svelte applications</p>
+        <div class="flex flex-row gap-4">
+          <a href="https://npmjs,com/package/typew" target="_black" rel="noreferrer">
+            <Icon icon="mdi:npm" class="w-16 h-16" />
+          </a>
+          <a href="https://github.com/zeucapua/typew" target="_black" rel="noreferrer">
+            <Icon icon="mdi:github" class="w-16 h-16"/>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col lg:flex-row divide-y-2 lg:divide-y-0 lg:divide-x-2 gap-8 mx-auto border-white border rounded-xl p-8 w-full h-full">
+      <div class="font-quicksand text-xl self-center basis-1/2">
+        <button on:click={togglePlaying}>
+        {#if playing}
+          <Icon icon="material-symbols:pause-outline-rounded" class="w-8 h-8" />
+        {:else}
+          <Icon icon="material-symbols:play-arrow-rounded" class="w-8 h-8" />
+        {/if}
+        </button>
+        <Trace {step} {highlights}>
+          <TLine>const a = 42;</TLine>
+          <TLine>a += 20;</TLine>
+          <TLine>console.log(a)</TLine>
+        </Trace>
+      </div>
+      <div class="flex flex-col gap-4 px-4 py-4 lg:py-0">
+        <h3 class="text-3xl font-generalsans font-bold">trace</h3>
+        <p class="text-xl font-quicksand">A line by line highlighter for Svelte</p>
+        <div class="flex flex-row gap-4">
+          <a href="https://npmjs,com/package/trace-svelte" target="_black" rel="noreferrer">
+            <Icon icon="mdi:npm" class="w-16 h-16" />
+          </a>
+          <a href="https://github.com/zeucapua/trace-svelte" target="_black" rel="noreferrer">
+            <Icon icon="mdi:github" class="w-16 h-16"/>
+          </a>
+          <a href="https://trace-svelte.vercel.app" target="_black" rel="noreferrer">
+            <Icon icon="gridicons:site" class="w-16 h-16"/>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 
   <h2 class="text-4xl lg:text-5xl font-generalsans font-bold">Tech Explorations</h2>
-  <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 grid-flow-row">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 grid-flow-row">
     {#each techs as t}
     <a href={t.link} target="_blank" rel="noreferrer">
       <div class="flex flex-col lg:flex-row w-full h-full gap-4 items-center border-white border rounded-xl px-4 py-2">
