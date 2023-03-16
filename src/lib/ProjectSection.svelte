@@ -210,7 +210,7 @@
     {#each designs as w}
     <a href={w.link}>
       <div class="flex flex-col gap-4 group">
-        <img src={w.screenshot} alt={w.title} class="w-fit h-fit aspect-auto"/>
+        <img src={w.screenshot} alt={w.title} class="w-fit h-fit aspect-[4/3]"/>
         <div class="group-hover:bg-[#f3cc30] transition-all duration-300 p-0 lg:p-4 h-full group-hover:text-black">
           <h3 class="text-3xl lg:text-4xl font-generalsans group-hover:font-bold">
             {w.title}
