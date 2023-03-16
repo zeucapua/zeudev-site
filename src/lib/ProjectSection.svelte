@@ -144,7 +144,7 @@
         <h3 class="text-3xl font-generalsans font-bold">typew</h3>
         <p class="text-xl font-quicksand">An intuitive typewriter effect for your Svelte applications</p>
         <div class="flex flex-row gap-4">
-          <a href="https://npmjs,com/package/typew" target="_black" rel="noreferrer">
+          <a href="https://npmjs.com/package/typew" target="_black" rel="noreferrer">
             <Icon icon="mdi:npm" class="w-16 h-16" />
           </a>
           <a href="https://github.com/zeucapua/typew" target="_black" rel="noreferrer">
@@ -173,7 +173,7 @@
         <h3 class="text-3xl font-generalsans font-bold">trace</h3>
         <p class="text-xl font-quicksand">A line by line highlighter for Svelte</p>
         <div class="flex flex-row gap-4">
-          <a href="https://npmjs,com/package/trace-svelte" target="_black" rel="noreferrer">
+          <a href="https://npmjs.com/package/trace-svelte" target="_black" rel="noreferrer">
             <Icon icon="mdi:npm" class="w-16 h-16" />
           </a>
           <a href="https://github.com/zeucapua/trace-svelte" target="_black" rel="noreferrer">
