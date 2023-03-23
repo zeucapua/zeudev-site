@@ -1,6 +1,5 @@
 <script lang="ts">
   import Icon from "@iconify/svelte";
-  import { fly } from "svelte/transition";
   import { Trace, TLine } from "trace-svelte";
   import { Typewriter, Text, Wait } from "typew";
 
@@ -106,18 +105,14 @@
   ];
 </script>
 
-<section 
-  in:fly={{duration: 1000, delay: 2500}}
-  out:fly={{duration: 1000}}
-  class="flex flex-col w-full max-w-7xl h-full mx-auto p-0 lg:p-8 gap-8"
->
+<section class="flex flex-col w-full max-w-7xl h-full mx-auto p-0 lg:p-8 gap-8">
   <h2 class="text-4xl lg:text-5xl font-generalsans font-bold">Projects</h2>
   <div class="flex flex-col lg:flex-row gap-8 lg:overflow-x-auto">
     {#each works as w}
     <a href={w.link} target="_blank" rel="noreferrer">
       <div class="flex flex-col gap-4 group">
         <img src={w.screenshot} alt={w.title} class="w-fit h-fit aspect-video"/>
-        <div class="group-hover:bg-[#f3cc30] transition-all duration-300 p-0 lg:p-4 h-full group-hover:text-black">
+        <div class="group-hover:bg-[#f3cc30] transition-all duration-300 p-2 lg:p-4 h-full group-hover:text-black">
           <h3 class="text-3xl lg:text-4xl font-generalsans group-hover:font-bold">
             {w.title}
           </h3>
@@ -144,10 +139,10 @@
         <h3 class="text-3xl font-generalsans font-bold">typew</h3>
         <p class="text-xl font-quicksand">An intuitive typewriter effect for your Svelte applications</p>
         <div class="flex flex-row gap-4">
-          <a href="https://npmjs.com/package/typew" target="_black" rel="noreferrer">
+          <a href="https://npmjs.com/package/typew" aria-label="Go to typew npmjs entry" target="_black" rel="noreferrer">
             <Icon icon="mdi:npm" class="w-16 h-16" />
           </a>
-          <a href="https://github.com/zeucapua/typew" target="_black" rel="noreferrer">
+          <a href="https://github.com/zeucapua/typew" aria-label="Go to typew Github repo" target="_black" rel="noreferrer">
             <Icon icon="mdi:github" class="w-16 h-16"/>
           </a>
         </div>
@@ -156,7 +151,7 @@
 
     <div class="flex flex-col lg:flex-row divide-y-2 lg:divide-y-0 lg:divide-x-2 gap-8 mx-auto border-white border rounded-xl p-8 w-full h-full">
       <div class="font-quicksand text-xl self-center basis-1/2">
-        <button on:click={togglePlaying}>
+        <button aria-label="Play/Pause the Trace demo" on:click={togglePlaying}>
         {#if playing}
           <Icon icon="material-symbols:pause-outline-rounded" class="w-8 h-8" />
         {:else}
@@ -173,13 +168,13 @@
         <h3 class="text-3xl font-generalsans font-bold">trace</h3>
         <p class="text-xl font-quicksand">A line by line highlighter for Svelte</p>
         <div class="flex flex-row gap-4">
-          <a href="https://npmjs.com/package/trace-svelte" target="_black" rel="noreferrer">
+          <a href="https://npmjs.com/package/trace-svelte" aria-label="Go to trace-svelte npmjs" target="_black" rel="noreferrer">
             <Icon icon="mdi:npm" class="w-16 h-16" />
           </a>
-          <a href="https://github.com/zeucapua/trace-svelte" target="_black" rel="noreferrer">
+          <a href="https://github.com/zeucapua/trace-svelte" aria-label="Go to trace-svelte Github repo" target="_black" rel="noreferrer">
             <Icon icon="mdi:github" class="w-16 h-16"/>
           </a>
-          <a href="https://trace-svelte.vercel.app" target="_black" rel="noreferrer">
+          <a href="https://trace-svelte.vercel.app" aria-label="Go to trace-svelte demo site" target="_black" rel="noreferrer">
             <Icon icon="gridicons:site" class="w-16 h-16"/>
           </a>
         </div>
@@ -194,7 +189,7 @@
     {#each techs as t}
     <a href={t.link} target="_blank" rel="noreferrer">
       <div class="flex flex-col lg:flex-row w-full h-full gap-4 items-center border-white border rounded-xl px-4 py-2">
-        <img src={t.screenshot} alt={t.title} class="w-full h-full max-w-xl max-h-xl p-8" />
+        <img src={t.screenshot} alt={t.title} class="aspect-square w-64 h-64 p-8" />
         <div class="flex flex-col gap-4 p-4">
           <h3 class="font-bold text-2xl lg:text-3xl font-generalsans">{t.title}</h3>
           <p class="text-lg lg:text-xl font-quicksand">{t.description}</p>
@@ -211,7 +206,7 @@
     <a href={w.link}>
       <div class="flex flex-col gap-4 group">
         <img src={w.screenshot} alt={w.title} class="w-fit h-fit aspect-[4/3]"/>
-        <div class="group-hover:bg-[#f3cc30] transition-all duration-300 p-0 lg:p-4 h-full group-hover:text-black">
+        <div class="group-hover:bg-[#f3cc30] transition-all duration-300 p-2 lg:p-4 h-full group-hover:text-black">
           <h3 class="text-3xl lg:text-4xl font-generalsans group-hover:font-bold">
             {w.title}
           </h3>
