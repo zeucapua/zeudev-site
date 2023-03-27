@@ -1,5 +1,6 @@
 <script lang="ts">
   import Icon from "@iconify/svelte";
+  import Banner from "$lib/Banner.svelte";
   import ContactSection from "$lib/ContactSection.svelte";
   import ProjectSection from "$lib/ProjectSection.svelte";
 
@@ -10,8 +11,16 @@
 </svelte:head>
 
 <div class="flex flex-col w-full min-w-screen h-full text-white p-8">
+  <Banner>
+    CURRENT PROJECT: 
+    <a 
+      class="font-bold font-quicksand text-white underline" 
+      href="https://github.com/zeucapua/lophop" target="_blank" rel="noreferrer"
+    >Lophop</a>,
+    an all-in-one online teaching tool designed for coding classes
+  </Banner>
   <section 
-    class="flex flex-row justify-center gap-8 w-fit px-8 py-4 my-8 mx-auto rounded-xl bg-[#e779c1]"
+    class="flex flex-row justify-center gap-8 w-fit px-8 py-4 my-8 mx-auto rounded-xl bg-[#58c7f3]"
   >
     <p class="text-md text-black font-bold font-quicksand">Quick Links:</p>
     <a 

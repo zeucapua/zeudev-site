@@ -2,6 +2,7 @@
   import Icon from "@iconify/svelte";
   import { Trace, TLine } from "trace-svelte";
   import { Typewriter, Text, Wait } from "typew";
+  import Technologies from "$lib/Technologies.svelte";
 
   let step = 0;
   let highlights = [
@@ -33,7 +34,7 @@
   const works = [
     {
       title: "Progressive Victory",
-      description: "Currently being remade in Astro. Designed and developed for an online community dedicated to getting young voters out for elections.",
+      description: "Designed and developed for an online community dedicated to getting young voters out for elections.",
       screenshot: "/images/PV22_Banner.png",
       link: "https://progressivevictory.win",
       tags: ["NextJS", "React", "Astro", "TailwindCSS", "Website"],
@@ -122,6 +123,8 @@
     </a>
     {/each}
   </div>
+
+  <Technologies />
 
   <h2 class="text-4xl lg:text-5xl font-generalsans font-bold">Packages</h2>
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 grid-flow-row">
