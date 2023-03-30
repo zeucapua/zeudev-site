@@ -127,6 +127,9 @@
   <Technologies />
 
   <h2 class="text-4xl lg:text-5xl font-generalsans font-bold">Packages</h2>
+  <p class="text-2xl lg:text-3xl font-quicksand">
+    Use these in your projects via <span class="font-mono">npm</span>
+  </p>
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 grid-flow-row">
 
     <div class="flex flex-col lg:flex-row divide-y-2 lg:divide-y-0 lg:divide-x-2 gap-8 mx-auto border-white border rounded-xl p-8 w-full h-full">
@@ -188,6 +191,9 @@
 
 
   <h2 class="text-4xl lg:text-5xl font-generalsans font-bold">Tech Explorations</h2>
+  <p class="text-2xl lg:text-3xl font-quicksand">
+    Projects made while learning different frameworks and services
+  </p>
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 grid-flow-row">
     {#each techs as t}
     <a href={t.link} target="_blank" rel="noreferrer">

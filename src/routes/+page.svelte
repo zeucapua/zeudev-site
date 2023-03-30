@@ -3,26 +3,24 @@
   import Banner from "$lib/Banner.svelte";
   import ContactSection from "$lib/ContactSection.svelte";
   import ProjectSection from "$lib/ProjectSection.svelte";
-
 </script>
 
 <svelte:head>
   <title>Zeu Capua - Full Stack Developer</title>
 </svelte:head>
 
-<div class="flex flex-col w-full min-w-screen h-full text-white p-8">
+<div class="relative flex flex-col w-full min-w-screen h-full text-white p-8">
   <Banner>
     CURRENT PROJECT: 
     <a 
       class="font-bold font-quicksand text-white underline" 
       href="https://github.com/zeucapua/lophop" target="_blank" rel="noreferrer"
     >Lophop</a>,
-    an all-in-one online teaching tool designed for coding classes
+    an all-in-one teaching tool designed for online classes
   </Banner>
   <section 
     class="flex flex-row justify-center gap-8 w-fit px-8 py-4 my-8 mx-auto rounded-xl bg-[#58c7f3]"
   >
-    <p class="text-md text-black font-bold font-quicksand">Quick Links:</p>
     <a 
       href="https://thethinks.vercel.app" 
       class="text-black font-quicksand hover:underline transition-all duration-300"
@@ -54,8 +52,8 @@
       <p 
         class="text-3xl lg:text-6xl font-thin w-full max-w-5xl text-white font-quicksand"
       >
-        I make websites for clients, and aim to write and create content
-        to make web development easier and accessible.
+         A fullstack web developer with a focus on education and creating content to 
+         make development easier and accessible.
       </p>
       <div 
       >

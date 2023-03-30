@@ -19,10 +19,12 @@
     { name: "HTML", icon: "mdi:language-html5" },
     { name: "CSS", icon: "mdi:language-css3" },
   ];
+
 </script>
 
+
 <section class="flex flex-col gap-8">
-  <div class="flex flex-col lg:flex-row lg:justify-between gap-8">
+    <div class="flex flex-col lg:flex-row lg:justify-between gap-8">
     <h2 class="text-4xl lg:text-5xl font-generalsans font-bold">Frameworks</h2>
     <div class="flex flex-row flex-wrap justify-start gap-8">
       {#each frameworks as f}
