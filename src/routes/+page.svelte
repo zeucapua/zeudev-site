@@ -33,6 +33,13 @@
     >
       Contact me
     </a>
+    <a 
+      href="/Zeu_Capua-Software_Engineer.pdf"
+      class="text-black font-quicksand hover:underline transition-all duration-300"
+      download
+    >
+      Resume
+    </a>
   </section>
 
   <section class="flex flex-col gap-8 p-0 lg:p-8">
