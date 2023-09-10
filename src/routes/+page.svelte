@@ -10,22 +10,14 @@
 </svelte:head>
 
 <div class="relative flex flex-col w-full min-w-screen h-full text-white p-8">
-  <Banner>
-    CURRENT PROJECT: 
-    <a 
-      class="font-bold font-quicksand text-white underline" 
-      href="https://github.com/zeucapua/lophop" target="_blank" rel="noreferrer"
-    >Lophop</a>,
-    an all-in-one teaching tool designed for online classes
-  </Banner>
   <section 
     class="flex flex-row justify-center gap-8 w-fit px-8 py-4 my-8 mx-auto rounded-xl bg-[#58c7f3]"
   >
     <a 
-      href="https://thethinks.vercel.app" 
+      href="https://thoughts.zeu.dev" 
       class="text-black font-quicksand hover:underline transition-all duration-300"
     >
-      The Thinks (Blog)
+      Thoughts
     </a>
     <a 
       href="/#contact"
@@ -34,7 +26,7 @@
       Contact me
     </a>
     <a 
-      href="/Zeu_Capua-Software_Engineer.pdf"
+      href="/Capua_Resume.pdf"
       class="text-black font-quicksand hover:underline transition-all duration-300"
       download
     >

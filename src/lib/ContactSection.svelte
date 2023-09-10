@@ -36,7 +36,7 @@
         Download my Resume:
       </p>
       <a 
-        href="/Zeu_Capua-Software_Engineer.pdf"
+        href="/Capua_Resume.pdf"
         class="text-black font-quicksand hover:underline transition-all duration-300"
         download
       >
