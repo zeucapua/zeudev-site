@@ -1,68 +1,76 @@
 <script lang="ts">
+  import { experience } from "$lib/information";
   import Icon from "@iconify/svelte";
-  import Banner from "$lib/Banner.svelte";
-  import ContactSection from "$lib/ContactSection.svelte";
-  import ProjectSection from "$lib/ProjectSection.svelte";
 </script>
 
 <svelte:head>
-  <title>Zeu Capua - Full Stack Developer</title>
+  <title>Zeu Capua - Full Stack Web Developer</title>
 </svelte:head>
 
-<div class="relative flex flex-col w-full min-w-screen h-full text-white p-8">
-  <section 
-    class="flex flex-row justify-center gap-8 w-fit px-8 py-4 my-8 mx-auto rounded-xl bg-[#58c7f3]"
-  >
-    <a 
-      href="https://thoughts.zeu.dev" 
-      class="text-black font-quicksand hover:underline transition-all duration-300"
-    >
+<!-- quick links -->
+<section class="flex flex-col gap-4 mx-auto justify-center items-center">
+  <h3 class="text-3xl lg:text-5xl font-bold">
+    <Icon icon="pixelarticons:external-link" class="inline" />
+    quick links
+  </h3>
+  <nav class="flex font-bold gap-8 font-quicksand underline underline-offset-8 decoration-dotted">
+    <a href="https://thoughts.zeu.dev" target="_blank">
       Thoughts
     </a>
-    <a 
-      href="/#contact"
-      class="text-black font-quicksand hover:underline transition-all duration-300"
-    >
-      Contact me
+    <a href="https://github.com/zeucapua" target="_blank">
+      Github
     </a>
-    <a 
-      href="/Capua_Resume.pdf"
-      class="text-black font-quicksand hover:underline transition-all duration-300"
-      download
-    >
-      Resume
+    <a href="https://twitter.com/zeu_dev" target="_blank">
+      Twitter
     </a>
-  </section>
+  </nav>
+</section>
 
-  <section class="flex flex-col gap-8 p-0 lg:p-8">
-    <div class="flex flex-row justify-around w-fit md:justify-center mx-auto gap-8">
-      <div 
-        class="w-16 h-16 md:w-48 md:h-48 rounded-full bg-[#e779c1]" />
-      <div 
-        class="w-16 h-16 md:w-48 md:h-48 rounded-full bg-[#f3cc30]" />
-      <div 
-        class="w-16 h-16 md:w-48 md:h-48 rounded-full bg-[#58c7f3]" />
-    </div>
-    <div class="flex flex-col gap-8 mx-auto text-center">
-      <p 
-        class="font-bold font-['GeneralSans'] text-4xl lg:text-7xl text-center text-white">
-        Hello, I'm Zeu.
-      </p>
-      <p 
-        class="text-3xl lg:text-6xl font-thin w-full max-w-5xl text-white font-quicksand"
-      >
-         A fullstack web developer with a focus on education and creating content to 
-         make development easier and accessible.
-      </p>
-      <div 
-      >
-        <Icon icon="bi:chevron-down" class="animate-bounce mx-auto text-3xl lg:text-6xl text-white" />
-      </div>
-    </div>
-  </section>
 
-  <ProjectSection />
-  <ContactSection /> 
+<!-- hero -->
+<section class="flex flex-col gap-4">
+  <h1 class="text-7xl lg:text-9xl font-bold items-center">
+    <Icon icon="pixelarticons:moon-stars" class="inline border border-4 border-black p-4 rounded-xl hover:-rotate-12 transition-all duration-300 shadow-xl" />
+    zeu capua
+  </h1>
+  <h2 class="text-4xl lg:text-7xl font-bold font-quicksand">
+    making the web fun and understandable for everyone
+  </h2> 
+</section>
 
-</div>
+
+<!-- experience -->
+<section class="flex flex-col gap-4">
+  <h3 class="text-3xl lg:text-5xl font-bold">
+    <img 
+      src="/content-files-pencil-ruler-3.svg" 
+      alt="Pencil cup from Streamline HQ"
+      class="inline w-32 border border-4 border-black p-4 rounded-xl hover:-rotate-12 transition-all duration-300 shadow-xl"/>
+    experience
+  </h3>
+  {#each experience as exp}
+    <p>{exp.title}</p>
+  {/each}
+</section>
+
+
+<!-- explorations -->
+
+
+
+<!-- testimonials -->
+
+
+
+<!-- contact me -->
+
+
+
+<!-- credits -->
+<section>
+  <p>Art by Streamline HQ</p>
+  <p>Logos from Iconify (various packs)</p>
+</section>
+
+
 
