@@ -4,10 +4,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        "quicksand": ["Quicksand"],
-        "generalsans": ["GeneralSans"],
+        general: ["GeneralSans"],
+        quicksand: ["Quicksand"]
       }
     },
   },
-  plugins: [require("@tailwindcss/line-clamp"), require('@tailwindcss/typography')],
 }
