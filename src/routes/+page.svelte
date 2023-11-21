@@ -113,7 +113,7 @@
     />
     information desk
   </h3>
-  <a href="/Capua-Resume.pdf" download class="flex gap-4 items-center w-fit border border-2 border-black border-dashed p-4 rounded-xl hover:bg-yellow-400 transition-all duration-300 shadow-lg">
+  <a href="/Capua_Resume.pdf" download class="flex gap-4 items-center w-fit border border-2 border-black border-dashed p-4 rounded-xl hover:bg-yellow-400 transition-all duration-300 shadow-lg">
     <img
       src="/content-files-pdf-2.svg"
       alt="PDF 2 from Streamline HQ"
